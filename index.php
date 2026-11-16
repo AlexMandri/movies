@@ -1,6 +1,14 @@
 <?php
 require_once("db.php");
 require_once("globals.php");
+
+$stmt = $conn->prepare("SELECT * FROM users");
+
+$stmt ->execute();
+$users = $stmt ->fetchAll();
+echo "<pre>";
+print_r($users);
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +25,14 @@ require_once("globals.php");
 </head>
 
 <body>
-    <h1>Olá mundo!</h1>
+    <h1>Lista de usuários</h1>
+    <?php foreach($users as $user): ?>
+        <p>
+            <?= $user["name"] ?>
+            <?= $user["lastname"] ?>
+        </p>
+
+        <?php endforeach; ?>
 </body>
 
 </html>

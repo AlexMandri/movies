@@ -4,8 +4,6 @@ $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";
 
-$conn = null;
-
 try {
     $conn = new PDO(
         "mysql:dbname=" . $db_name .
@@ -23,5 +21,5 @@ try {
         false
     );
 } catch (PDOException $e) {
-    echo "Erro: " . $e->getMessage();
+    die( "Erro: " . $e->getMessage());
 }
